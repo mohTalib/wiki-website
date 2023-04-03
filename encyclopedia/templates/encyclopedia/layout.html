@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="row">
+            <div class="sidebar col-lg-2 col-md-3">
+                <h2>Opportunity Club</h2>
+                <div>
+                    <a href="{% url 'index' %}">Home</a>
+                </div>
+            </div>
+            <div class="main col-lg-10 col-md-9">
+                <div class="side-up">
+                    <img src="{% static 'encylopedia/moon.png' %}">
+                </div>
+
+                <ul>
+                    {% for entry in entries %}
+                        <li><a href="{% url 'entries' title=entry %}">{{entry}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </body>
+</html>
